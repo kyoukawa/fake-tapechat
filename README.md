@@ -51,3 +51,34 @@ python3 main.py
 ```
 
 ps:感谢cyh提供的代码
+
+# 0.0.3
+~~0.0.2没啥更新就不写了~~
+## new features
+### Dark mode
+css中添加这段代码，可以让网页在深色模式下背景改为黑色
+```css
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #222;
+    color: #eee;
+  }
+}
+```
+by:kyoukawa(jc)
+### error.html
+当密码错误，或重复注册（或有人试图盗号 时跳转至此网页
+by:ChenYuHe
+### 返回首页&&首页导航
+```html
+<!-- 返回首页 -->
+<a href = "/"> 返回首页 </a>
+
+<!-- 跳转，例如signup -->
+<a href = "/signup"> 注册 </a>
+```
+by: kyoukawa(jc) && ChengYuHe
+
+### 背景图片
+~~已经被姜川删除(~~
+by:ChengYuHe
