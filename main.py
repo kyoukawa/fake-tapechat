@@ -53,4 +53,4 @@ def answer_question():
     else:
         return render_template("password_error.html")
 
-app.run(host="0.0.0.0")
+app.run(host="0.0.0.0",port=80)
