@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>提问</title>
+    <style>
+        body {
+            width: 95%;
+            background: url(../static/images/test.jpg);
+            margin-top: 30px;
+            margin-left: 2.5%;
+        }
+        p,a,h1{
+            color: white;
+        }
+        img {
+            width: 30%;
+            margin-top:5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ask">
+		<!--获取id和内容-->
+        <form  action="/ask">
+			<p> 希望回答的人的用户名 </p>
+            <input  name="username"/>
+			<p> 问题 </p>
+            <input  name="question"/>
+            <button>提交</button>
+        </form>
+    </div>    
+    <p><a href="/">返回主页</a></p>
+</body>
+
+</html>

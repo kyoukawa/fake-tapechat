@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>注册</title>
+    <style>
+        body {
+            width: 95%;
+            background: url(../static/images/1.gif);
+            margin-top: 30px;
+            margin-left: 2.5%;
+        }
+        p,a,h1{
+            color: yellow;
+        }
+        img {
+            width: 30%;
+            margin-top:5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signup">
+		<!--获取id和内容-->
+        <form  action="/signup">
+            <p>输入用户名</p>
+            <input  name="username"/>
+            <p></p>
+            <p>输入密码</p>
+            <input  name="password"/>
+            <button>提交</button>
+        </form>
+    </div>    
+    <p><a href="/">返回主页</a></p>
+</body>
+
+</html>
