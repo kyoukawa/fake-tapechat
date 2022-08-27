@@ -82,3 +82,42 @@ by: kyoukawa(jc) && ChengYuHe
 ### 背景图片
 ~~已经被姜川删除(~~
 by:ChengYuHe
+
+# 0.0.4
+## flask flash
+在html页面闪现提示(所以error.html没用了
+
+效果:
+![](./static/README/0.0.4/flash-eg.png)
+
+python部分:
+```python
+from flask import Flask, flash, redirect, render_template, request, url_for
+# 一定要加这几个模块不然会报错(别问我怎么知道的
+app.secret_key = 'random string' # 随便设置一个秘钥,在 app = Flask(__name__) 的后面写
+
+# 调用
+flash("Hello world!!!")
+```
+
+html部分:
+
+在body中添加此段代码
+```html
+{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul class=flashes>
+				{% for message in messages %}
+					<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+        {% endif %}
+{% endwith %}
+```
+
+## admin mode
+/admin
+
+密码:12345678
+
+**注意输入密码后,用户数据将会清空**
