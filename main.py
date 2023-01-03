@@ -12,13 +12,22 @@ def main_page():
 def admin_page():
     password = request.values.get("password")
     if password == "12345678":
-        flash("Welcome admin!")
+        with open('./data/user_data.json','r',encoding='utf8')as fp:
+            return json.load(fp)
+    return render_template("admin.html")
+
+@app.route('/clear')
+def clear_page():
+    password = request.values.get("password")
+    if password == "12345678":
+        flash("清空成功")
         ept = dict()
+        # ept = {None: None}
         with open('./data/user_data.json','w',encoding='utf8')as fp:
             json.dump(ept,fp,ensure_ascii=False)
         with open('./data/data.json','w',encoding='utf8')as fp:
             json.dump(ept,fp,ensure_ascii=False)
-    return render_template("admin.html")
+    return render_template("clear.html")
 
     
 
@@ -28,9 +37,12 @@ def new_user():
         user_data = json.load(fp)
     name = request.values.get("username")
     password = request.values.get("password")
-    if name not in user_data:
+    if name == None:
+        return render_template("signup.html")
+    elif name not in user_data:
         flash("注册成功")
         user_data[name] = password
+        print(name)
     else:
         flash("此用户名已注册")
         return render_template("signup.html")
@@ -76,4 +88,4 @@ def answer_question():
         flash('无问题')
         return render_template("answer.html")
 
-app.run(host="0.0.0.0",port=80)
+app.run(host="0.0.0.0",port=81)

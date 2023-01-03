@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>clear</title>
+    <style>
+        p,a,h1{
+            color: blue;
+        }
+  @media (prefers-color-scheme: dark) {
+   body {
+    background: #222;
+    color: #eee;
+   }
+  }
+    </style>
+</head>
+
+<body>
+ {% with messages = get_flashed_messages() %}
+  {% if messages %}
+   <ul class=flashes>
+    {% for message in messages %}
+     <li>{{ message }}</li>
+    {% endfor %}
+   </ul>
+        {% endif %}
+ {% endwith %}
+    <div class="clear">
+  <!--获取id和内容-->
+        <form  action="/clear">
+   <p> 管理员密码  </p>
+            <input  name="password"/>
+            <button>提交</button>
+        </form>
+    </div>    
+    <p><a href="/">返回主页</a></p>
+</body>
+
+</html>

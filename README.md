@@ -95,7 +95,6 @@ python部分:
 from flask import Flask, flash, redirect, render_template, request, url_for
 # 一定要加这几个模块不然会报错(别问我怎么知道的
 app.secret_key = 'random string' # 随便设置一个秘钥,在 app = Flask(__name__) 的后面写
-
 # 调用
 flash("Hello world!!!")
 ```
