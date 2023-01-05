@@ -11,7 +11,7 @@
 				color: #eee;
 			}
 		}
-        p,a,h1{
+        a{
             color: blue;
         }
     </style>
@@ -35,18 +35,14 @@
             <p></p>
             <p>输入密码</p>
 			<input  name="password"/>
+			<p>输入问题内容</p>
+            <input  name="question"/>
+            <p>输入回答内容</p>
+            <input  name="answer"/>
             <button>提交</button>
         </form>
     </div>
     <p><a href="/">返回主页</a></p>
-	<!--详情-->
-    <div class="answer">
-        {% for question in questions %}
-			<h1> 问题详情 </h1>
-			<p>{{ question }}</p>
-        {% endfor %}
-    </div>
-
 </body>
 
 </html>

@@ -42,7 +42,7 @@ def new_user():
     elif name not in user_data:
         flash("注册成功")
         user_data[name] = password
-        print(name)
+        # print(name)
     else:
         flash("此用户名已注册")
         return render_template("signup.html")
@@ -58,12 +58,34 @@ def ask_question():
         # print(type(json_data))
     name = request.values.get("username")
     question = request.values.get("question")
+    if name == None:
+        return render_template("ask.html")
     if name not in json_data:
-        json_data[name]=[]
-    json_data[name].append(question)
+        json_data[name]={}
+    json_data[name][question] = ""
     with open("./data/data.json",'w',encoding='utf8') as fp:
         json.dump(json_data,fp,ensure_ascii=False)
     return render_template("ask.html")
+
+@app.route('/check')
+def check():
+    with open('./data/data.json','r',encoding='utf8')as fp:
+        json_data = json.load(fp)
+    with open('./data/user_data.json','r',encoding='utf8')as fp:
+        user_data = json.load(fp)
+    name = request.values.get("username")
+
+    if name == None:
+        return render_template("check.html")
+    elif name not in user_data:
+        flash("用户不存在")
+        return render_template("check.html")
+    elif name not in json_data:
+        flash("无问题")
+        return render_template("check.html")
+    else:
+        return render_template("check.html", questions=json_data[name], answers=json_data[name].values())
+
 
 @app.route('/answer')
 def answer_question():
@@ -73,19 +95,31 @@ def answer_question():
         user_data = json.load(fp)
     name = request.values.get("username")
     password = request.values.get("password")
+    question = request.values.get("question")
+    answer = request.values.get("answer")
     if name == None:
         return render_template("answer.html")
-    if name not in user_data:
+    elif name not in user_data:
         flash("用户不存在")
         return render_template("answer.html")
-    if password == user_data[name] and name in json_data:
+    elif password == user_data[name] and name in json_data:
         flash("登录成功")
-        return render_template("answer.html", questions=json_data[name])
+        if question in json_data[name]:
+            flash("回答成功")
+            # print(json_data[name][question])
+            json_data[name][question] = answer
+            # print(json_data[name][question])
+            with open("./data/data.json",'w',encoding='utf8') as fp:
+                json.dump(json_data,fp,ensure_ascii=False)
+            return render_template("answer.html")
+        else:
+            flash("此问题不存在")
+            return render_template("answer.html")
+        
     elif password != user_data[name]:
         flash("密码错误,请重试")
         return render_template("answer.html")
     else:
-        flash('无问题')
         return render_template("answer.html")
 
 app.run(host="0.0.0.0",port=81)
