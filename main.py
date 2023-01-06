@@ -10,7 +10,7 @@ def main_page():
     # 主页
 
 @app.route('/help')
-def main_page():
+def help_page():
     return render_template("help.html")
     # 帮助
 
