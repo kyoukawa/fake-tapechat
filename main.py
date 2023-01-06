@@ -9,6 +9,11 @@ def main_page():
     return render_template("index.html")
     # 主页
 
+@app.route('/help')
+def main_page():
+    return render_template("help.html")
+    # 帮助
+
 @app.route('/admin')
 def admin_page():
     with open('./data/admin.json','r',encoding='utf8')as fp:
