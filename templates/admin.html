@@ -4,39 +4,30 @@
 <head>
     <meta charset="utf-8">
     <title>admin</title>
-    <style>
-        p,a,h1{
-            color: blue;
-        }
-  @media (prefers-color-scheme: dark) {
-   body {
-    background: #222;
-    color: #eee;
-   }
-  }
-    </style>
+    <link href="static/style.css" rel="stylesheet">
 </head>
 
-<body>
- {% with messages = get_flashed_messages() %}
-  {% if messages %}
-   <ul class=flashes>
-    {% for message in messages %}
-     <li>{{ message }}</li>
-    {% endfor %}
-   </ul>
-        {% endif %}
- {% endwith %}
+<body opacity=0.3 background="static/images/test.jpeg">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <h1>admin</h1>
     <div class="admin">
-  <!--获取id和内容-->
-        <form  action="/admin">
+        <!--获取id和内容-->
+        <form action="/admin">
             <p>输入用户名</p>
-            <input  name="username"/>
+            <input name="username" />
             <p>输入密码</p>
-            <input  name="password"/>
+            <input name="password" />
             <button>提交</button>
         </form>
-    </div>    
+    </div>
     <p><a href="/">返回主页</a></p>
 </body>
 

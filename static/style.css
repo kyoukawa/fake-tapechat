@@ -1,0 +1,24 @@
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+h1 {
+  color: #2ecc71;
+  text-align: center;
+  font: Roboto;
+  font-size: 5em;
+}
+
+a {
+  color: #2ecc71;
+  text-decoration: none;
+  font-size: 2em;
+}
+
+p {
+  color: #2ecc71;
+  font-size: 2em;
+}

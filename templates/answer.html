@@ -4,41 +4,32 @@
 <head>
     <meta charset="utf-8">
     <title>回答</title>
-    <style>
-		@media (prefers-color-scheme: dark) {
-			body {
-				background: #222;
-				color: #eee;
-			}
-		}
-        a{
-            color: blue;
-        }
-    </style>
+    <link href="static/style.css" rel="stylesheet">
 </head>
 
-<body>
-	{% with messages = get_flashed_messages() %}
-		{% if messages %}
-			<ul class=flashes>
-				{% for message in messages %}
-					<li>{{ message }}</li>
-				{% endfor %}
-			</ul>
-        {% endif %}
-	{% endwith %}
+<body opacity=0.3 background="static/images/test.jpeg">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <h1>回答</h1>
     <div class="answer">
-		<!--获取id和内容-->
-        <form  action="/answer">
+        <!--获取id和内容-->
+        <form action="/answer">
             <p>输入用户名</p>
-            <input  name="username"/>
+            <input name="username" />
             <p></p>
             <p>输入密码</p>
-			<input  name="password"/>
-			<p>输入问题内容</p>
-            <input  name="question"/>
+            <input name="password" />
+            <p>输入问题内容</p>
+            <input name="question" />
             <p>输入回答内容</p>
-            <input  name="answer"/>
+            <input name="answer" />
             <button>提交</button>
         </form>
     </div>

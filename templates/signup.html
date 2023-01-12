@@ -4,40 +4,31 @@
 <head>
     <meta charset="utf-8">
     <title>注册</title>
-    <style>
-		@media (prefers-color-scheme: dark) {
-			body{
-				background: #222;
-				color: #eee;
-			}
-		}
-		a{
-			color: blue
-		}
-    </style>
+    <link href="static/style.css" rel="stylesheet">
 </head>
 
-<body>
-	{% with messages = get_flashed_messages() %}
-		{% if messages %}
-			<ul class=flashes>
-				{% for message in messages %}
-					<li>{{ message }}</li>
-				{% endfor %}
-			</ul>
-        {% endif %}
-	{% endwith %}
+<body opacity=0.3 background="static/images/test.jpeg">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <h1>注册</h1>
     <div class="signup">
-		<!--获取id和内容-->
-        <form  action="/signup">
+        <!--获取id和内容-->
+        <form action="/signup">
             <p>输入用户名</p>
-            <input  name="username"/>
+            <input name="username" />
             <p></p>
             <p>输入密码</p>
-            <input  name="password"/>
+            <input name="password" />
             <button>提交</button>
         </form>
-    </div>    
+    </div>
     <p><a href="/">返回主页</a></p>
 </body>
 
