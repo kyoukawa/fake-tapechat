@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>提问</title>
     <link href="static/style.css" rel="stylesheet">
+    <script src="static/script.js"></script>
 </head>
 
 <body opacity=0.3 background="static/images/test.jpeg">
@@ -12,7 +13,9 @@
     {% if messages %}
     <ul class=flashes>
         {% for message in messages %}
-        <li>{{ message }}</li>
+        <script>
+            alert("{{ message }}");
+        </script>
         {% endfor %}
     </ul>
     {% endif %}

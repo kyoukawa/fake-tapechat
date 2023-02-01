@@ -4,19 +4,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>main</title>
+    <title>主页</title>
     <link href="static/style.css" rel="stylesheet">
+    <script src="static/script.js"></script>
 </head>
 
-<body opacity=0.3 background="static/images/test.jpeg">
+<body opacity=0.3 background="https://v.api.aa1.cn/api/api-pctu1/index.php?aa1=yuantu">
     <h1>Fake-tapechat</h1>
-    <p><a href="/signup">注册账号</a></p>
-    <p><a href="/ask">提问</a></p>
-    <p><a href="/answer">回答</a></p>
-    <p><a href="/check">查看</a></p>
-    <p><a href="/admin">admin</a></p>
-    <p><a href="/clear">清空</a></p>
-    <p></p>
+    <div class="links">
+        <button type="button" onclick="signup_button()">注册账号</button>
+        <button type="button" onclick="ask_button()">提问</button>
+        <button type="button" onclick="check_button()">查看</button>
+        <button type="button" onclick="answer_button()">回答</button>
+        <button type="button" onclick="admin_button()">管理员</button>
+        <button type="button" onclick="clear_button()">清空</button>
+    </div>
 </body>
 
-</html>>
+</html>

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>注册</title>
     <link href="static/style.css" rel="stylesheet">
+    <script src="static/script.js"></script>
 </head>
 
 <body opacity=0.3 background="static/images/test.jpeg">
@@ -12,20 +13,20 @@
     {% if messages %}
     <ul class=flashes>
         {% for message in messages %}
-        <li>{{ message }}</li>
+        <script>
+            alert("{{ message }}");
+            window.location.href = "/";
+        </script>
         {% endfor %}
     </ul>
     {% endif %}
     {% endwith %}
     <h1>注册</h1>
-    <div class="signup">
+    <div class="input">
         <!--获取id和内容-->
         <form action="/signup">
-            <p>输入用户名</p>
-            <input name="username" />
-            <p></p>
-            <p>输入密码</p>
-            <input name="password" />
+            用户名:<input name="username" /><br>
+            密码:<input type="password" name="password" /><br>
             <button>提交</button>
         </form>
     </div>
