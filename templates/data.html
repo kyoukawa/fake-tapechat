@@ -8,7 +8,7 @@
     <script src="static/script.js"></script>
 </head>
 
-<body opacity=0.3 background="static/images/test.jpeg">
+<body opacity=0.3>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <ul class=flashes>
@@ -21,9 +21,9 @@
     {% endif %}
     {% endwith %}
     <h1>admin</h1>
-    <div class="admin">
+    <div class="data">
         <!--获取id和内容-->
-        <form action="/admin">
+        <form action="/data">
             <p>输入用户名</p>
             <input name="username" />
             <p>输入密码</p>
@@ -32,6 +32,16 @@
         </form>
     </div>
     <p><a href="/">返回主页</a></p>
+
+    <div class="data">
+        {% for question in questions %}
+        {% for answer in answers %}
+        <h2>{{ usr }}</h2>
+        <p>{{ pwd }}</p>
+        {% endfor %}
+        {% endfor %}
+    </div>
+
 </body>
 
 </html>

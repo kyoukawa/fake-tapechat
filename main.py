@@ -44,9 +44,17 @@ def help_page():
 
 @app.route('/admin')
 def admin_page():
+    return render_template("admin_index.html")
+
+
+@app.route('/data')
+def data_page():
     with open('./data/admin.json', 'r', encoding='utf8')as fp:
         admin_data = json.load(fp)
         # 获取admin信息
+    with open('./data/user_data.json', 'r', encoding='utf8')as fp:
+        user_data = json.load(fp)
+        # 用户信息
     if admin_data == {}:
         # 无admin
         flash("无管理员请注册")
@@ -55,7 +63,7 @@ def admin_page():
         # 获取账号密码
         if name == None:
             # 账号为空
-            return render_template("admin.html")
+            return render_template("data.html")
         admin_data[name] = password
         # 注册
         with open('./data/admin.json', 'w', encoding='utf8')as fp:
@@ -69,18 +77,20 @@ def admin_page():
     # 获取账号密码
     if name == None:
         # 账号为空
-        return render_template("admin.html")
+        return render_template("data.html")
     elif name not in admin_data:
         flash("用户不存在于管理员列表")
-        return render_template("admin.html")
+        return render_template("data.html")
     elif password == admin_data[name]:
         # 密码正确
-        flash("登录成功")
-        with open('./data/user_data.json', 'r', encoding='utf8')as fp:
-            return json.load(fp)
+        # flash("登录成功")
+        print(user_data)
+        print(user_data.values())
+        return render_template("data.html", usr=user_data, pwd=user_data.values())
+
     else:
         flash("密码错误")
-    return render_template("admin.html")
+    return render_template("data.html")
 
 
 @app.route('/clear')
@@ -92,7 +102,7 @@ def clear_page():
         name = request.values.get("username")
         password = request.values.get("password")
         if name == None:
-            return render_template("admin.html")
+            return render_template("data.html")
         admin_data[name] = password
         with open('./data/admin.json', 'w', encoding='utf8')as fp:
             json.dump(admin_data, fp, ensure_ascii=False)
@@ -199,6 +209,8 @@ def check():
         flash("无问题")
         return render_template("check.html")
     else:
+        print(json_data[name])
+        print(json_data[name].values())
         return render_template("check.html", questions=json_data[name], answers=json_data[name].values())
 
 

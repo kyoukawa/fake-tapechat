@@ -16,3 +16,6 @@ function admin_button() {
 function clear_button() {
     window.location.href = "/clear";
 } 
+function data_button() {
+    window.location.href = "/data";
+} 
